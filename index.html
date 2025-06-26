@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relógio em Tempo Real</title>
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-bottom: 30px;
+    }
+
+    #paragrafo-hora {
+      font-size: 1.6em;
+      color: #34495e;
+      margin: 20px auto;
+      padding: 15px 25px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      display: inline-block;
+      min-width: 300px;
+    }
+
+    #botao-hora {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #botao-hora:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⏰ Relógio em Tempo Real</h1>
+
+  <p id="paragrafo-hora"></p>
+
+  <button id="botao-hora" onclick="iniciarRelogio()">Iniciar Relógio</button>
+
+  <script>
+    let intervaloAtivo = false;
+
+    function iniciarRelogio() {
+      if (intervaloAtivo) return; // Evita múltiplos intervalos
+
+      intervaloAtivo = true;
+
+      setInterval(() => {
+        const agora = new Date();
+        const dataHoraFormatada = agora.toLocaleString('pt-BR', {
+          dateStyle: 'full',
+          timeStyle: 'medium'
+        });
+
+        document.getElementById('paragrafo-hora').textContent = `🗓️ ${dataHoraFormatada}`;
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
